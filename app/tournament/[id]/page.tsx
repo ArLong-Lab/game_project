@@ -329,16 +329,16 @@ export default function TournamentDetailPage() {
             )}
 
             {tournament.matches && (
-              <Tabs defaultValue="matches" className="w-full">
+              <Tabs defaultValue="matches" className="w-full ">
                 <TabsList className="bg-[#0c0a20] border-b border-[#2a2852] w-full justify-start mb-6">
-                  <TabsTrigger value="matches" className="data-[state=active]:bg-[#2a2852]">
+                  <TabsTrigger value="matches" className="data-[state=active]:bg-[#2a2852] text-white">
                     Matches
                   </TabsTrigger>
-                  <TabsTrigger value="teams" className="data-[state=active]:bg-[#2a2852]">
+                  <TabsTrigger value="teams" className="data-[state=active]:bg-[#2a2852] text-white">
                     Teams
                   </TabsTrigger>
                   {tournament.rules && (
-                    <TabsTrigger value="rules" className="data-[state=active]:bg-[#2a2852]">
+                    <TabsTrigger value="rules" className="data-[state=active]:bg-[#2a2852] text-white">
                       Rules
                     </TabsTrigger>
                   )}
@@ -362,11 +362,11 @@ export default function TournamentDetailPage() {
                               <div className="w-16 h-16 bg-[#1a1836] rounded-full flex items-center justify-center mb-2">
                                 <span className="text-lg font-bold">{match.team1.substring(0, 2)}</span>
                               </div>
-                              <div className="font-bold">{match.team1}</div>
+                              <div className="font-bold text-white">{match.team1}</div>
                             </div>
 
                             <div className="text-center">
-                              <div className="text-2xl font-bold mb-1">VS</div>
+                              <div className="text-2xl font-bold mb-1 text-white">VS</div>
                               <div className="flex space-x-2">
                                 <Youtube className="h-4 w-4 text-red-500" />
                                 <Twitch className="h-4 w-4 text-purple-500" />
@@ -377,7 +377,7 @@ export default function TournamentDetailPage() {
                               <div className="w-16 h-16 bg-[#1a1836] rounded-full flex items-center justify-center mb-2">
                                 <span className="text-lg font-bold">{match.team2.substring(0, 2)}</span>
                               </div>
-                              <div className="font-bold">{match.team2}</div>
+                              <div className="font-bold text-white">{match.team2}</div>
                             </div>
                           </div>
                         </CardContent>
@@ -386,7 +386,7 @@ export default function TournamentDetailPage() {
                   </div>
                 </TabsContent>
 
-                <TabsContent value="teams" className="mt-0">
+                <TabsContent value="teams" className="mt-0 text-white">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {tournament.teamsList.map((team: any) => (
                       <Card key={team.id} className="bg-[#0c0a20] border-[#2a2852]">
@@ -398,8 +398,8 @@ export default function TournamentDetailPage() {
                               className="w-12 h-12 rounded-full"
                             />
                           </div>
-                          <div>
-                            <h3 className="font-bold">{team.name}</h3>
+                          <div className="">
+                            <h3 className="font-bold text-white">{team.name}</h3>
                             <div className="text-sm text-gray-400">
                               {team.wins}-{team.losses} W/L
                             </div>
@@ -414,14 +414,14 @@ export default function TournamentDetailPage() {
                   <TabsContent value="rules" className="mt-0">
                     <Card className="bg-[#0c0a20] border-[#2a2852]">
                       <CardContent className="p-6">
-                        <h3 className="text-xl font-bold mb-4">Tournament Rules</h3>
+                        <h3 className="text-xl font-bold mb-4 text-white">Tournament Rules</h3>
                         <ul className="space-y-2">
                           {tournament.rules.map((rule: string, index: number) => (
                             <li key={index} className="flex items-start">
                               <span className="inline-block w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center mr-3 flex-shrink-0">
                                 {index + 1}
                               </span>
-                              {rule}
+                              <p className="text-white">{rule}</p>
                             </li>
                           ))}
                         </ul>

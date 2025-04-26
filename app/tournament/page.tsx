@@ -136,7 +136,7 @@ export default function TournamentPage() {
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-4">
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-500 group-hover:to-blue-400 transition-all duration-300">
+                        <h3 className="text-xl text-white font-bold mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-500 group-hover:to-blue-400 transition-all duration-300">
                           {tournament.name}
                         </h3>
                         <div className="flex items-center text-gray-400 text-sm mb-2">
