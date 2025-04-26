@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
+import NavBar from "@/components/navbar"
 
 // Mock tournament data
 const TOURNAMENTS = [
@@ -80,17 +81,7 @@ export default function TournamentPage() {
   return (
     <main className="min-h-screen bg-[#0c0a20] text-white">
       <div className="container mx-auto py-8 px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold mb-4 md:mb-0 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-400">
-            Tournaments
-          </h1>
-          <Link href="/tournament/create">
-            <Button className="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600">
-              <Plus className="mr-2 h-4 w-4" />
-              Create Tournament
-            </Button>
-          </Link>
-        </div>
+        <NavBar/>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <div className="relative">

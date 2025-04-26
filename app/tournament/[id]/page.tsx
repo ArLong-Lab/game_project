@@ -352,7 +352,7 @@ export default function TournamentDetailPage() {
                           <div className="p-4 bg-[#1a1836] border-b border-[#2a2852] flex justify-between items-center">
                             <div className="flex items-center">
                               <Clock className="h-4 w-4 mr-2 text-gray-400" />
-                              <span>{match.time}</span>
+                              <span className="text-gray-400">{match.time}</span>
                             </div>
                             <Badge className="bg-[#2a2852]">{match.group}</Badge>
                           </div>
@@ -418,7 +418,7 @@ export default function TournamentDetailPage() {
                         <ul className="space-y-2">
                           {tournament.rules.map((rule: string, index: number) => (
                             <li key={index} className="flex items-start">
-                              <span className="inline-block w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center mr-3 flex-shrink-0">
+                              <span className="flex w-6 h-6 rounded-full bg-purple-600 text-white items-center justify-center mr-3 flex-shrink-0">
                                 {index + 1}
                               </span>
                               <p className="text-white">{rule}</p>
@@ -447,7 +447,7 @@ export default function TournamentDetailPage() {
                     <Clock className="h-5 w-5 mr-3 text-blue-500" />
                     <div>
                       <div className="text-sm text-gray-400">Time</div>
-                      <div>
+                      <div className="">
                         {tournament.startTime} - {tournament.endTime}
                       </div>
                     </div>

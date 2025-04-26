@@ -89,10 +89,10 @@ export default function CreateTournamentPage() {
           <form onSubmit={handleSubmit}>
             <Card className="bg-[#1a1836] border-[#2a2852] mb-8">
               <CardContent className="p-6">
-                <h2 className="text-xl font-bold mb-6">Basic Information</h2>
+                <h2 className="text-xl font-bold mb-6 text-purple-600">Basic Information</h2>
 
-                <div className="grid grid-cols-1 gap-6">
-                  <div className="space-y-2">
+                <div className="grid grid-cols-1 gap-6 text-white">
+                  <div className="space-y-2 ">
                     <Label htmlFor="name">Tournament Name</Label>
                     <Input
                       id="name"
@@ -241,15 +241,15 @@ export default function CreateTournamentPage() {
             </Card>
 
             <Card className="bg-[#1a1836] border-[#2a2852] mb-8">
-              <CardContent className="p-6">
+              <CardContent className="p-6 ">
                 <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-xl font-bold">Tournament Rules</h2>
+                  <h2 className="text-xl font-bold text-purple-600">Tournament Rules</h2>
                   <Button
                     type="button"
                     variant="outline"
                     size="sm"
                     onClick={addRule}
-                    className="border-[#2a2852] text-white hover:bg-[#2a2852]"
+                    className="border-[#2a2852] text-white bg-[#2a2852]"
                   >
                     <Plus className="h-4 w-4 mr-2" />
                     Add Rule
@@ -288,7 +288,7 @@ export default function CreateTournamentPage() {
                 type="button"
                 variant="outline"
                 onClick={() => router.push("/tournament")}
-                className="border-[#2a2852] text-white hover:bg-[#2a2852]"
+                className="border-[#2a2852] text-white bg-[#2a2852]"
               >
                 Cancel
               </Button>
