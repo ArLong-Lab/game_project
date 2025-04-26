@@ -79,10 +79,7 @@ export default function TournamentPage() {
   })
 
   return (
-    <main className="min-h-screen bg-[#0c0a20] text-white">
-      <div className="container mx-auto py-8 px-4">
-        <NavBar/>
-
+    <div className="">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
@@ -192,6 +189,5 @@ export default function TournamentPage() {
           )}
         </div>
       </div>
-    </main>
   )
 }

@@ -1,15 +1,12 @@
-import NavBar from '@/components/navbar'
-import React from 'react'
+import NavBar from "@/components/navbar";
+import React from "react";
 
 const ComunityPage = () => {
   return (
-    <main className='min-h-screen bg-[#0c0a20] text-white'>
-        <div className='container mx-auto py-8 px-4'>
-            <NavBar/>
-            
-        </div>
-    </main>
-  )
-}
+    <div className="">
+      <span className="font-oxanium ">Hello</span>
+    </div>
+  );
+};
 
-export default ComunityPage
+export default ComunityPage;
