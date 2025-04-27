@@ -54,7 +54,6 @@ export default function CreateOrJoinTeamPage() {
     };
 
     await createTeam(teamData);
-    console.log(formData)
     router.push("/tournament") 
   }
 

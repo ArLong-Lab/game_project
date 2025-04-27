@@ -1,15 +1,14 @@
 import { NextRequest, NextResponse } from "next/server"
 import { connectDB } from "@/lib/db"
-import User from "../../models/user"
+import User from "../../../models/user"
 
 export async function POST(req: NextRequest) {
   await connectDB()
-  const { teamId } = await req.json()
-  const {name} = await req.json()
+  const { teamId , name} = await req.json()
 
   try {
 
-    const user = await User.findOne({name});
+    const user = await User.findOne({username: name});
 
 
     if(!user){

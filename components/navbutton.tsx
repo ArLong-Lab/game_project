@@ -18,14 +18,14 @@ import {
 
 const NavButton = () => {
   
-  const { isSignedIn, user, isLoaded } = useUser();
+  const { isSignedIn, user } = useUser();
   const [team, setTeam] = useState<any>(null);
 
    function AlertDialogTeaam() {
     return (
       <AlertDialog>
         <AlertDialogTrigger asChild>
-          <Button variant="outline">{team.name}</Button>
+          <Button className="bg-[#2a2852] hover:bg-[#3a3862] mr-7">{team.name}</Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
@@ -44,7 +44,7 @@ const NavButton = () => {
   }
 
   useEffect(()=>{
-    if (isLoaded && isSignedIn){
+    if (!user?.username) return;
       const fetchTeam = async()=>{
         const response = await fetch('/api/user', {
           method: 'POST',
@@ -58,11 +58,14 @@ const NavButton = () => {
         else{
           console.log("Error: ",data.message);
         }
-      }
+    }
+    if(isSignedIn){
       fetchTeam();
     }
     return()=>{}
-  },[])
+  },[user])
+
+ 
 
   return (
     <div className="inline-block">

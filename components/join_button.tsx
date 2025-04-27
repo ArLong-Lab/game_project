@@ -27,12 +27,19 @@ const Join_Btn = () => {
         console.log("Error: ",data.message);
       }
     }
-    fetchUser();
+    if(params.id && params.id?.length > 1){
+      fetchUser();
+    }
     return()=>{}
   },[])
 
   const handelJoinBtn = ()=>{
+    const hasJoined = team.tournaments.includes(params.id);
+    if(hasJoined){
+      return
+    }
     const JoinTournament = async()=>{
+      
       await fetch("/api/tournament/join", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -42,7 +49,7 @@ const Join_Btn = () => {
     JoinTournament();
   }
 
-  if(user?.username == 'admin' || !isSignedIn || isInTeam){
+  if(user?.username == 'admin' || !isSignedIn || !isInTeam || team.tournaments.includes(params.id)){
     return
   }
   return (

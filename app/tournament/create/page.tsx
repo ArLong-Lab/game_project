@@ -68,7 +68,6 @@ export default function CreateTournamentPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     // Here you would typically send the data to your API
-    console.log("Tournament data:", formData)
     await createTournament(formData);
     // Redirect back to tournaments page
     router.push("/tournament")

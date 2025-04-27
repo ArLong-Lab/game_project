@@ -23,7 +23,8 @@ export async function joinTeam(teamId: string, name: string) {
   export async function getTeamsByTournament(tournamentId: string) {
     const res = await fetch(`/api/team?tournamentId=${tournamentId}`)
     if (!res.ok) throw new Error("Failed to fetch teams")
-    return res.json()
+      if(res.ok)
+      return res.json()
   }
   
   

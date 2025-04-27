@@ -25,7 +25,7 @@ import Join_Btn from "@/components/join_button";
 // Mock tournament data
 const TOURNAMENTS = [
   {
-    id: "1",
+    _id: "1",
     name: "Summer Gaming Championship",
     status: "upcoming",
     date: "2024-06-15",
@@ -46,7 +46,7 @@ const TOURNAMENTS = [
     ],
     matches: [
       {
-        id: "m1",
+        _id: "m1",
         team1: "Phoenix Rising",
         team2: "Shadow Hunters",
         time: "14:00",
@@ -54,7 +54,7 @@ const TOURNAMENTS = [
         group: "Group A",
       },
       {
-        id: "m2",
+        _id: "m2",
         team1: "Neon Dragons",
         team2: "Frost Giants",
         time: "15:30",
@@ -62,7 +62,7 @@ const TOURNAMENTS = [
         group: "Group A",
       },
       {
-        id: "m3",
+        _id: "m3",
         team1: "Crimson Elite",
         team2: "Void Walkers",
         time: "17:00",
@@ -70,7 +70,7 @@ const TOURNAMENTS = [
         group: "Group B",
       },
       {
-        id: "m4",
+        _id: "m4",
         team1: "Thunder Lords",
         team2: "Mystic Owls",
         time: "18:30",
@@ -80,56 +80,56 @@ const TOURNAMENTS = [
     ],
     teamsList: [
       {
-        id: "t1",
+        _id: "t1",
         name: "Phoenix Rising",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 0,
         losses: 0,
       },
       {
-        id: "t2",
+        _id: "t2",
         name: "Shadow Hunters",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 0,
         losses: 0,
       },
       {
-        id: "t3",
+        _id: "t3",
         name: "Neon Dragons",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 0,
         losses: 0,
       },
       {
-        id: "t4",
+        _id: "t4",
         name: "Frost Giants",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 0,
         losses: 0,
       },
       {
-        id: "t5",
+        _id: "t5",
         name: "Crimson Elite",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 0,
         losses: 0,
       },
       {
-        id: "t6",
+        _id: "t6",
         name: "Void Walkers",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 0,
         losses: 0,
       },
       {
-        id: "t7",
+        _id: "t7",
         name: "Thunder Lords",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 0,
         losses: 0,
       },
       {
-        id: "t8",
+        _id: "t8",
         name: "Mystic Owls",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 0,
@@ -139,7 +139,7 @@ const TOURNAMENTS = [
     image: "/placeholder.svg?height=300&width=800",
   },
   {
-    id: "2",
+    _id: "2",
     name: "Winter Esports Showdown",
     status: "active",
     date: "2024-05-25",
@@ -160,7 +160,7 @@ const TOURNAMENTS = [
     ],
     matches: [
       {
-        id: "m1",
+        _id: "m1",
         team1: "Purple Death Cadets",
         team2: "Trigger Brain Squad",
         time: "10:00",
@@ -168,7 +168,7 @@ const TOURNAMENTS = [
         group: "Group 04",
       },
       {
-        id: "m2",
+        _id: "m2",
         team1: "The Black Hat Hackers",
         team2: "Your Worst Nightmare",
         time: "12:30",
@@ -176,7 +176,7 @@ const TOURNAMENTS = [
         group: "Group 05",
       },
       {
-        id: "m3",
+        _id: "m3",
         team1: "Witches and Wizards",
         team2: "Resting Bitch Face",
         time: "15:00",
@@ -184,7 +184,7 @@ const TOURNAMENTS = [
         group: "Group 06",
       },
       {
-        id: "m4",
+        _id: "m4",
         team1: "Game Over",
         team2: "Reaper Squad",
         time: "17:30",
@@ -194,56 +194,56 @@ const TOURNAMENTS = [
     ],
     teamsList: [
       {
-        id: "t1",
+        _id: "t1",
         name: "Purple Death Cadets",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 1,
         losses: 0,
       },
       {
-        id: "t2",
+        _id: "t2",
         name: "Trigger Brain Squad",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 0,
         losses: 1,
       },
       {
-        id: "t3",
+        _id: "t3",
         name: "The Black Hat Hackers",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 1,
         losses: 0,
       },
       {
-        id: "t4",
+        _id: "t4",
         name: "Your Worst Nightmare",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 0,
         losses: 1,
       },
       {
-        id: "t5",
+        _id: "t5",
         name: "Witches and Wizards",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 0,
         losses: 0,
       },
       {
-        id: "t6",
+        _id: "t6",
         name: "Resting Bitch Face",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 0,
         losses: 0,
       },
       {
-        id: "t7",
+        _id: "t7",
         name: "Game Over",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 0,
         losses: 0,
       },
       {
-        id: "t8",
+        _id: "t8",
         name: "Reaper Squad",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 0,
@@ -253,7 +253,7 @@ const TOURNAMENTS = [
     image: "/placeholder.svg?height=300&width=800",
   },
   {
-    id: "3",
+    _id: "3",
     name: "Pro Gaming League",
     status: "completed",
     date: "2024-04-10",
@@ -274,7 +274,7 @@ const TOURNAMENTS = [
     ],
     matches: [
       {
-        id: "m1",
+        _id: "m1",
         team1: "Digital Demons",
         team2: "Cyber Samurai",
         time: "12:00",
@@ -282,7 +282,7 @@ const TOURNAMENTS = [
         group: "Group A",
       },
       {
-        id: "m2",
+        _id: "m2",
         team1: "Pixel Pirates",
         team2: "Binary Bandits",
         time: "14:00",
@@ -290,7 +290,7 @@ const TOURNAMENTS = [
         group: "Group A",
       },
       {
-        id: "m3",
+        _id: "m3",
         team1: "Code Crushers",
         team2: "Data Destroyers",
         time: "16:00",
@@ -298,7 +298,7 @@ const TOURNAMENTS = [
         group: "Group B",
       },
       {
-        id: "m4",
+        _id: "m4",
         team1: "Algorithm Assassins",
         team2: "Network Ninjas",
         time: "18:00",
@@ -308,42 +308,42 @@ const TOURNAMENTS = [
     ],
     teamsList: [
       {
-        id: "t1",
+        _id: "t1",
         name: "Digital Demons",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 3,
         losses: 0,
       },
       {
-        id: "t2",
+        _id: "t2",
         name: "Cyber Samurai",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 2,
         losses: 1,
       },
       {
-        id: "t3",
+        _id: "t3",
         name: "Pixel Pirates",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 2,
         losses: 1,
       },
       {
-        id: "t4",
+        _id: "t4",
         name: "Binary Bandits",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 1,
         losses: 2,
       },
       {
-        id: "t5",
+        _id: "t5",
         name: "Code Crushers",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 1,
         losses: 2,
       },
       {
-        id: "t6",
+        _id: "t6",
         name: "Data Destroyers",
         logo: "/placeholder.svg?height=60&width=60",
         wins: 0,
@@ -353,7 +353,7 @@ const TOURNAMENTS = [
     image: "/placeholder.svg?height=300&width=800",
   },
   {
-    id: "4",
+    _id: "4",
     name: "Unigine Championship Series",
     status: "upcoming",
     date: "2024-07-20",
@@ -363,7 +363,7 @@ const TOURNAMENTS = [
     image: "/placeholder.svg?height=300&width=800",
   },
   {
-    id: "5",
+    _id: "5",
     name: "Midnight Madness Tournament",
     status: "active",
     date: "2024-05-30",
@@ -385,7 +385,7 @@ export default function TournamentDetailPage() {
   useEffect(() => {
     // Simulate API fetch
     const fetchTournament = () => {
-      const found = TOURNAMENTS.find((t) => t.id === params.id);
+      const found = TOURNAMENTS.find((t) => t._id === params.id);
       if (found) {
         setTournament(found);
         setMatches(found.matches);
@@ -398,7 +398,7 @@ export default function TournamentDetailPage() {
                 const data = await getTournaments();
                 setTournament(data.find((t: any)=> t._id === params.id));
                 if(params.id){
-                  const team = getTeamsByTournament(params.id.toString());
+                  const team = await getTeamsByTournament(params.id.toString());
                   setTeams(team);
                 }
                 
@@ -412,7 +412,11 @@ export default function TournamentDetailPage() {
     };
 
     fetchTournament();
-    return()=>{}
+    return()=>{
+      setTournament(null);
+      setMatches(null);
+      setTeams(null);
+    }
   }, [params.id, router]);
 
   if (loading) {
@@ -552,7 +556,7 @@ export default function TournamentDetailPage() {
                   {(matches) ? (<div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                     {tournament.matches.map((match: any) => (
                       <Card
-                        key={match.id}
+                        key={match._id}
                         className="bg-[#0c0a20] border-[#2a2852] overflow-hidden"
                       >
                         <CardContent className="p-0">
@@ -615,7 +619,7 @@ export default function TournamentDetailPage() {
                   {(teams) ? (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {teams.map((team: any) => (
                       <Card
-                        key={team.id}
+                        key={team._id}
                         className="bg-[#0c0a20] border-[#2a2852]"
                       >
                         <CardContent className="p-4 flex items-center">

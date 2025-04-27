@@ -33,5 +33,6 @@ export const getTournaments = async () => {
   }
 
   const tournaments = await res.json();
+  
   return tournaments as Tournament[];
 };

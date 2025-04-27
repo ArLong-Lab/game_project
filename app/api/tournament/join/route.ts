@@ -26,13 +26,13 @@ export async function POST(req: NextRequest) {
     }
 
     // Check if the team is already in the tournament
-    if (tournament.teams.includes(team._id)) {
-      return NextResponse.json({ message: "Team already joined this tournament" }, { status: 200 })
-    }
+    // if (tournament.teams.includes(team._id)) {
+    //   return NextResponse.json({ message: "Team already joined this tournament" }, { status: 200 })
+    // }
 
     // Add the team to the tournament
-    tournament.teams.push(team._id)
-    await tournament.save()
+    // team.tournaments.push(tournament._id)
+    // await team.save()
 
     // Optionally update the Team's tournaments list too
     team.tournaments = team.tournaments || []

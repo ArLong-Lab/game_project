@@ -139,7 +139,21 @@ export default function TournamentPage() {
     const fetchTournaments = async () => {
       try {
         const data = await getTournaments();
-        setTournaments((prev) => [...prev, ...data]);
+        // setTournaments((prev) => {
+        //   const merged = [...prev, ...data];
+        //   console.log("Merged tournaments:", merged); // log AFTER merging
+        //   return merged;
+        // })
+        const merged = [
+          ...TOURNAMENTS,
+          ...data.filter(
+            (fetchedTournament) =>
+              !TOURNAMENTS.some(
+                (staticTournament) => staticTournament._id === fetchedTournament._id
+              )
+          ),
+        ];
+        setTournaments(merged);
       } catch (error) {
         console.error(error);
       }
@@ -147,7 +161,11 @@ export default function TournamentPage() {
     
     fetchTournaments();
 
-    return()=>{}
+    return()=>{
+      setTournaments([]);
+      setSearchQuery("");
+      setStatusFilter("all");
+    }
   },[])
 
   // Filter tournaments based on search and filters

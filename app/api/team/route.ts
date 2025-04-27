@@ -41,7 +41,9 @@ export async function GET(req: NextRequest) {
   
     try {
       const teams = await Team.find({ tournaments: tournamentId })
-  
+      if(teams.length===0){
+        return NextResponse.json(null, { status: 200 })
+      }
       return NextResponse.json(teams, { status: 200 })
     } catch (error) {
       console.error(error)
