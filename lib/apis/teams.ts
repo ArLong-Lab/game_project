@@ -10,13 +10,20 @@ export async function createTeam(data: Omit<Team, "_id" | "wins" | "losses" | "t
   return res.json()
 }
 
-export async function joinTeam(teamId: string) {
+export async function joinTeam(teamId: string, name: string) {
     const res = await fetch("/api/team/join", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ teamId }),
+      body: JSON.stringify({ teamId ,name}),
     })
     if (!res.ok) throw new Error("Failed to join team")
     return res.json()
   }
+
+  export async function getTeamsByTournament(tournamentId: string) {
+    const res = await fetch(`/api/team?tournamentId=${tournamentId}`)
+    if (!res.ok) throw new Error("Failed to fetch teams")
+    return res.json()
+  }
+  
   

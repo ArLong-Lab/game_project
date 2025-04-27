@@ -8,13 +8,14 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
-import { createTeam } from "@/lib/apis/teams"
+import { createTeam, joinTeam } from "@/lib/apis/teams"
 import { uploadImageToS3 } from "@/lib/apis/upload"
+import { useUser } from "@clerk/nextjs"
 // import { createTeam, joinTeam } from "@/lib/apis/team" // you'll create these API functions
 
 export default function CreateOrJoinTeamPage() {
   const router = useRouter()
-  
+  const { isSignedIn, user} = useUser()
   const [formData, setFormData] = useState({
     name: "",
     logo: null as File | null,
@@ -54,12 +55,13 @@ export default function CreateOrJoinTeamPage() {
 
     await createTeam(teamData);
     console.log(formData)
-    // router.push("/tournament") // redirect to teams page
+    router.push("/tournament") 
   }
 
   const handleJoinTeam = async (e: React.FormEvent) => {
     e.preventDefault()
-    // await joinTeam(joinTeamId)
+    if(user?.username)
+    {await joinTeam(joinTeamId, user.username)}
     router.push("/tournament")
   }
 
@@ -71,7 +73,7 @@ export default function CreateOrJoinTeamPage() {
         onClick={() => router.push("/tournament")}
       >
         <ArrowLeft className="mr-2 h-4 w-4" />
-        Back to Teams
+        Back to Tournament
       </Button>
 
       <div className="max-w-3xl mx-auto">

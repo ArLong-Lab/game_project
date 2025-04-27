@@ -13,10 +13,14 @@ import {
   Youtube,
   Twitch,
 } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { getTournaments } from "@/lib/apis/tournament";
+import { getTeamsByTournament } from "@/lib/apis/teams";
+import Join_Btn from "@/components/join_button";
 
 // Mock tournament data
 const TOURNAMENTS = [
@@ -374,6 +378,8 @@ export default function TournamentDetailPage() {
   const params = useParams();
   const router = useRouter();
   const [tournament, setTournament] = useState<any>(null);
+  const [matches, setMatches] = useState<any>(null);
+  const [teams, setTeams] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -382,14 +388,31 @@ export default function TournamentDetailPage() {
       const found = TOURNAMENTS.find((t) => t.id === params.id);
       if (found) {
         setTournament(found);
+        setMatches(found.matches);
+        setTeams(found.teamsList);
       } else {
         // Redirect to tournaments page if not found
-        router.push("/tournament");
+        // router.push("/tournament");
+        const fetchTournaments = async () => {
+              try {
+                const data = await getTournaments();
+                setTournament(data.find((t: any)=> t._id === params.id));
+                if(params.id){
+                  const team = getTeamsByTournament(params.id.toString());
+                  setTeams(team);
+                }
+                
+              } catch (error) {
+                console.error(error);
+              }
+            };
+            fetchTournaments();
       }
       setLoading(false);
     };
 
     fetchTournament();
+    return()=>{}
   }, [params.id, router]);
 
   if (loading) {
@@ -454,6 +477,7 @@ export default function TournamentDetailPage() {
               </div>
 
               <div className="flex mt-4 md:mt-0 space-x-2">
+                <Join_Btn/>
                 <Button className="bg-[#2a2852] hover:bg-[#3a3862]">
                   <Share2 className="mr-2 h-4 w-4" />
                   Share
@@ -499,7 +523,7 @@ export default function TournamentDetailPage() {
               </div>
             )}
 
-            {tournament.matches && (
+            { (
               <Tabs defaultValue="matches" className="w-full ">
                 <TabsList className="bg-[#0c0a20] border-b border-[#2a2852] w-full justify-start mb-6">
                   <TabsTrigger
@@ -525,7 +549,7 @@ export default function TournamentDetailPage() {
                 </TabsList>
 
                 <TabsContent value="matches" className="mt-0">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                  {(matches) ? (<div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                     {tournament.matches.map((match: any) => (
                       <Card
                         key={match.id}
@@ -580,12 +604,16 @@ export default function TournamentDetailPage() {
                         </CardContent>
                       </Card>
                     ))}
-                  </div>
+                  </div>): (
+                    <div className="text-white text-center p-4">
+                      No matches available for this tournament.
+                    </div>
+                  )}
                 </TabsContent>
 
                 <TabsContent value="teams" className="mt-0 text-white">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {tournament.teamsList.map((team: any) => (
+                  {(teams) ? (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {teams.map((team: any) => (
                       <Card
                         key={team.id}
                         className="bg-[#0c0a20] border-[#2a2852]"
@@ -609,7 +637,11 @@ export default function TournamentDetailPage() {
                         </CardContent>
                       </Card>
                     ))}
+                  </div>):(
+                    <div className="text-white text-center p-4">
+                    No teams available for this tournament.
                   </div>
+                  )}
                 </TabsContent>
 
                 {tournament.rules && (

@@ -13,7 +13,7 @@ import { Tournament } from "@/lib/types"
 import { getTournaments } from "@/lib/apis/tournament"
 
 // Mock tournament data
-const TOURNAMENTS = [
+const TOURNAMENTS: Tournament[] = [
   {
     _id: "1",
     name: "Summer Gaming Championship",
@@ -23,6 +23,19 @@ const TOURNAMENTS = [
     teams: 16,
     prize: "$5,000",
     image: "/placeholder.svg?height=80&width=80",
+    description:
+      "The ultimate Battle Royale tournament featuring the best teams from around the world. Compete for glory and a massive prize pool!",
+    location: "Online",
+    startTime: "14:00 UTC",
+    endTime: "20:00 UTC",
+    rules: [
+      "Teams must have 4 players",
+      "All players must be at least 16 years old",
+      "No cheating or exploiting game mechanics",
+      "Matches will be streamed on official channels",
+      "Tournament admins have final say on all disputes",
+    ],
+    maxTeams: 16
   },
   {
     _id: "2",
@@ -33,6 +46,18 @@ const TOURNAMENTS = [
     teams: 8,
     prize: "$2,500",
     image: "/placeholder.svg?height=80&width=80",
+    description:
+      "An intense Team Deathmatch tournament where the best squads battle for supremacy. Fast-paced action guaranteed!",
+    location: "Online",
+    startTime: "10:00 UTC",
+    endTime: "18:00 UTC",rules: [
+      "Teams must have 5 players",
+      "All players must be at least 16 years old",
+      "No cheating or exploiting game mechanics",
+      "Matches will be streamed on official channels",
+      "Tournament admins have final say on all disputes",
+    ],
+    maxTeams: 8
   },
   {
     _id: "3",
@@ -43,6 +68,19 @@ const TOURNAMENTS = [
     teams: 12,
     prize: "$3,000",
     image: "/placeholder.svg?height=80&width=80",
+    description:
+      "The premier Capture the Flag tournament for professional teams. Strategy and teamwork are key to victory!",
+    location: "Online",
+    startTime: "12:00 UTC",
+    endTime: "20:00 UTC",
+    rules: [
+      "Teams must have 6 players",
+      "All players must be at least 18 years old",
+      "No cheating or exploiting game mechanics",
+      "Matches will be streamed on official channels",
+      "Tournament admins have final say on all disputes",
+    ],
+    maxTeams: 12
   },
   {
     _id: "4",
@@ -53,6 +91,18 @@ const TOURNAMENTS = [
     teams: 24,
     prize: "$10,000",
     image: "/placeholder.svg?height=80&width=80",
+    description: "A championship series for unigine gamers.",
+    startTime: "11:00 AM",
+    endTime: "7:00 PM",
+    location: "San Francisco, CA",
+    rules: [
+      "Teams must have 4 players",
+      "All players must be at least 16 years old",
+      "No cheating or exploiting game mechanics",
+      "Matches will be streamed on official channels",
+      "Tournament admins have final say on all disputes",
+    ],
+    maxTeams: 20
   },
   {
     _id: "5",
@@ -63,30 +113,45 @@ const TOURNAMENTS = [
     teams: 20,
     prize: "$4,000",
     image: "/placeholder.svg?height=80&width=80",
+    description: "A midnight gaming extravaganza.",
+    startTime: "8:00 PM",
+    endTime: "2:00 AM",
+    location: "Las Vegas, NV",
+    rules: [
+      "Teams must have 5 players",
+      "All players must be at least 16 years old",
+      "No cheating or exploiting game mechanics",
+      "Matches will be streamed on official channels",
+      "Tournament admins have final say on all disputes",
+    ],
+    maxTeams: 20
   },
+  
 ]
 
 export default function TournamentPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
   const [typeFilter, setTypeFilter] = useState("all")
-  const [tournaments, setTournaments]= useState<Tournament[]>([]);
-
+  const [tournaments, setTournaments]= useState<Tournament[]>(TOURNAMENTS);
+ 
   useEffect(()=>{
     const fetchTournaments = async () => {
       try {
         const data = await getTournaments();
-        setTournaments(data);
+        setTournaments((prev) => [...prev, ...data]);
       } catch (error) {
         console.error(error);
       }
     };
-    TOURNAMENTS.push(...tournaments)
+    
     fetchTournaments();
+
+    return()=>{}
   },[])
 
   // Filter tournaments based on search and filters
-  const filteredTournaments = TOURNAMENTS.filter((tournament) => {
+  const filteredTournaments = tournaments.filter((tournament) => {
     const matchesSearch = tournament.name.toLowerCase().includes(searchQuery.toLowerCase())
     const matchesStatus = statusFilter === "all" || tournament.status === statusFilter
     const matchesType = typeFilter === "all" || tournament.type === typeFilter

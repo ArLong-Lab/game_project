@@ -17,14 +17,34 @@ export async function POST(req: NextRequest) {
 }
 
 // Get all teams
-export async function GET() {
-  await connectDB()
+// export async function GET() {
+//   await connectDB()
 
-  try {
-    const teams = await Team.find()
-    return NextResponse.json(teams, { status: 200 })
-  } catch (error) {
-    console.error(error)
-    return NextResponse.json({ error: "Failed to fetch teams" }, { status: 500 })
+//   try {
+//     const teams = await Team.find()
+//     return NextResponse.json(teams, { status: 200 })
+//   } catch (error) {
+//     console.error(error)
+//     return NextResponse.json({ error: "Failed to fetch teams" }, { status: 500 })
+//   }
+// }
+
+export async function GET(req: NextRequest) {
+    await connectDB()
+  
+    const { searchParams } = new URL(req.url)
+    const tournamentId = searchParams.get("tournamentId")
+  
+    if (!tournamentId) {
+      return NextResponse.json({ error: "Tournament ID is required" }, { status: 400 })
+    }
+  
+    try {
+      const teams = await Team.find({ tournaments: tournamentId })
+  
+      return NextResponse.json(teams, { status: 200 })
+    } catch (error) {
+      console.error(error)
+      return NextResponse.json({ error: "Failed to fetch teams" }, { status: 500 })
+    }
   }
-}

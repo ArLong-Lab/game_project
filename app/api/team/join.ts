@@ -5,17 +5,24 @@ import User from "../../models/user"
 export async function POST(req: NextRequest) {
   await connectDB()
   const { teamId } = await req.json()
+  const {name} = await req.json()
 
   try {
-    // You can change this to get userId from session if you use auth
-    const userId = "somehow-get-current-user-id"
 
-    if (!userId) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    const user = await User.findOne({name});
+
+
+    if(!user){
+        const newUser = await new User({username: name, team: teamId}).save()
+        return NextResponse.json(newUser, { status: 200 })
     }
 
+    // if (!userId) {
+    //   return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    // }
+
     const updatedUser = await User.findByIdAndUpdate(
-      userId,
+      user.id,
       { team: teamId },
       { new: true }
     )
