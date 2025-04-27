@@ -30,7 +30,7 @@ export default function InsightsPage() {
         <div className="group">
           <div className="relative overflow-hidden rounded-lg">
             <Image
-              src="/placeholder.svg?height=300&width=500"
+              src="/gta6.jpg?height=300&width=500"
               width={500}
               height={300}
               alt="GTA 6 Trailer"
@@ -100,7 +100,7 @@ export default function InsightsPage() {
         <div className="group">
           <div className="relative overflow-hidden rounded-lg">
             <Image
-              src="/placeholder.svg?height=300&width=500"
+              src="/ps6.jpg?height=300&width=500"
               width={500}
               height={300}
               alt="PlayStation 6 Rumors"
@@ -172,7 +172,7 @@ export default function InsightsPage() {
         <div className="group">
           <div className="relative overflow-hidden rounded-lg">
             <Image
-              src="/placeholder.svg?height=300&width=500"
+              src="/ER.jpg?height=300&width=500"
               width={500}
               height={300}
               alt="Elden Ring DLC"
@@ -244,7 +244,7 @@ export default function InsightsPage() {
         <div className="group">
           <div className="relative overflow-hidden rounded-lg">
             <Image
-              src="/placeholder.svg?height=300&width=500"
+              src="/indegames.jpg?height=300&width=500"
               width={500}
               height={300}
               alt="Indie Game Festival"
@@ -314,7 +314,7 @@ export default function InsightsPage() {
         <div className="group">
           <div className="relative overflow-hidden rounded-lg">
             <Image
-              src="/placeholder.svg?height=300&width=500"
+              src="/ggl.jpg?height=300&width=500"
               width={500}
               height={300}
               alt="Esports Tournament"
@@ -384,7 +384,7 @@ export default function InsightsPage() {
         <div className="group">
           <div className="relative overflow-hidden rounded-lg">
             <Image
-              src="/placeholder.svg?height=300&width=500"
+              src="/vr.jpg?height=300&width=500"
               width={500}
               height={300}
               alt="VR Gaming"
@@ -457,7 +457,7 @@ export default function InsightsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="relative h-64 lg:h-auto">
               <Image
-                src="/placeholder.svg?height=600&width=800"
+                src="/ai.jpg?height=600&width=800"
                 width={800}
                 height={600}
                 alt="The Future of Gaming"

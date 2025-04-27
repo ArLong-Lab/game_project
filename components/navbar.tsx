@@ -16,25 +16,25 @@ const NavBar = () => {
       <div className="">
         <Link
           href={"#"}
-          className="text-2xl font-bold mb-4 md:mb-0 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-400"
+          className="text-2xl font-bold mb-4 md:mb-0 text-white"
         >
           Home
         </Link>
         <Link
           href={"/tournament"}
-          className="text-2xl pl-4 font-bold mb-4 md:mb-0 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-400"
+          className="text-2xl pl-4 font-bold mb-4 md:mb-0 text-white"
         >
           Tournaments
         </Link>
         <Link
           href={"/community"}
-          className="text-2xl pl-4 font-bold mb-4 md:mb-0 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-400"
+          className="text-2xl pl-4 font-bold mb-4 md:mb-0 text-white"
         >
           Community
         </Link>
         <Link
           href={"/news"}
-          className="text-2xl pl-4 font-bold mb-4 md:mb-0 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-400"
+          className="text-2xl pl-4 font-bold mb-4 md:mb-0 text-white"
         >
           News
         </Link>
