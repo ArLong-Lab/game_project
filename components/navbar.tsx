@@ -1,20 +1,15 @@
-"use client";
 import React from "react";
-import { Button } from "./ui/button";
 import Link from "next/link";
 import {
   SignedIn,
   SignedOut,
   SignInButton,
   SignUpButton,
-  useAuth,
   UserButton,
 } from "@clerk/nextjs";
-import { Plus } from "lucide-react";
 import NavButton from "./navbutton";
 
 const NavBar = () => {
-  const { isSignedIn } = useAuth();
   return (
     <div className="flex flex-col md:flex-row justify-between items-center mb-8">
       <h1></h1>

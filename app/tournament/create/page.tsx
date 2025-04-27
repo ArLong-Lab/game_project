@@ -11,10 +11,12 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
+import { createTournament } from "@/lib/apis/tournament"
 
 export default function CreateTournamentPage() {
   const router = useRouter()
   const [formData, setFormData] = useState({
+    _id:"",
     name: "",
     description: "",
     date: "",
@@ -23,7 +25,10 @@ export default function CreateTournamentPage() {
     location: "Online",
     type: "",
     prize: "",
-    maxTeams: "",
+    image: "",
+    status: "upcoming",
+    teams: 10,
+    maxTeams: 0,
     rules: ["Teams must have 4 players", "All players must be at least 16 years old"],
   })
 
@@ -60,17 +65,16 @@ export default function CreateTournamentPage() {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     // Here you would typically send the data to your API
     console.log("Tournament data:", formData)
-
+    await createTournament(formData);
     // Redirect back to tournaments page
     router.push("/tournament")
   }
 
   return (
-    <main className="min-h-screen bg-[#0c0a20] text-white">
       <div className="container mx-auto py-8 px-4">
         <Button
           variant="ghost"
@@ -229,7 +233,7 @@ export default function CreateTournamentPage() {
                           type="number"
                           placeholder="e.g. 16"
                           className="bg-[#0c0a20] border-[#2a2852] text-white pl-10"
-                          value={formData.maxTeams}
+                          value={formData.maxTeams.toString()}
                           onChange={handleInputChange}
                           required
                         />
@@ -302,6 +306,5 @@ export default function CreateTournamentPage() {
           </form>
         </div>
       </div>
-    </main>
   )
 }

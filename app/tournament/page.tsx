@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Search, Plus, Calendar, Trophy, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -9,11 +9,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
 import NavBar from "@/components/navbar"
+import { Tournament } from "@/lib/types"
+import { getTournaments } from "@/lib/apis/tournament"
 
 // Mock tournament data
 const TOURNAMENTS = [
   {
-    id: "1",
+    _id: "1",
     name: "Summer Gaming Championship",
     status: "upcoming",
     date: "2024-06-15",
@@ -23,7 +25,7 @@ const TOURNAMENTS = [
     image: "/placeholder.svg?height=80&width=80",
   },
   {
-    id: "2",
+    _id: "2",
     name: "Winter Esports Showdown",
     status: "active",
     date: "2024-05-25",
@@ -33,7 +35,7 @@ const TOURNAMENTS = [
     image: "/placeholder.svg?height=80&width=80",
   },
   {
-    id: "3",
+    _id: "3",
     name: "Pro Gaming League",
     status: "completed",
     date: "2024-04-10",
@@ -43,7 +45,7 @@ const TOURNAMENTS = [
     image: "/placeholder.svg?height=80&width=80",
   },
   {
-    id: "4",
+    _id: "4",
     name: "Unigine Championship Series",
     status: "upcoming",
     date: "2024-07-20",
@@ -53,7 +55,7 @@ const TOURNAMENTS = [
     image: "/placeholder.svg?height=80&width=80",
   },
   {
-    id: "5",
+    _id: "5",
     name: "Midnight Madness Tournament",
     status: "active",
     date: "2024-05-30",
@@ -68,6 +70,20 @@ export default function TournamentPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
   const [typeFilter, setTypeFilter] = useState("all")
+  const [tournaments, setTournaments]= useState<Tournament[]>([]);
+
+  useEffect(()=>{
+    const fetchTournaments = async () => {
+      try {
+        const data = await getTournaments();
+        setTournaments(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    TOURNAMENTS.push(...tournaments)
+    fetchTournaments();
+  },[])
 
   // Filter tournaments based on search and filters
   const filteredTournaments = TOURNAMENTS.filter((tournament) => {
@@ -119,7 +135,7 @@ export default function TournamentPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredTournaments.length > 0 ? (
             filteredTournaments.map((tournament) => (
-              <Link href={`/tournament/${tournament.id}`} key={tournament.id}>
+              <Link href={`/tournament/${tournament._id}`} key={tournament._id}>
                 <Card className="bg-[#1a1836] border-[#2a2852] hover:border-purple-500 transition-all duration-300 overflow-hidden group">
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-4">

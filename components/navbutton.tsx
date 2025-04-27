@@ -6,6 +6,7 @@ import { Plus } from "lucide-react";
 import { useUser } from "@clerk/nextjs";
 
 const NavButton = () => {
+  
   const { isSignedIn, user, isLoaded } = useUser();
 
   return (
