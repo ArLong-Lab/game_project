@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
 import { connectDB } from "@/lib/db"
+import Team from "../../models/team"
 import User from "../../models/user"
+
 
 export async function POST(req: NextRequest) {
   await connectDB()
@@ -12,6 +14,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Try to find the user first
+    
     let user = await User.findOne({ username }).populate("team")
 
     // If user doesn't exist, create it
